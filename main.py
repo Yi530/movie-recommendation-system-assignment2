@@ -9,7 +9,15 @@ import pycountry
 
 API_BASE_URL = os.getenv("API_BASE_URL", "http://127.0.0.1:5001")
 ES_BASE_URL = os.getenv("ES_BASE_URL", "http://localhost:9200")
-es = Elasticsearch(ES_BASE_URL)
+ES_API_KEY = os.getenv("ES_API_KEY", "")
+
+if ES_API_KEY:
+    es = Elasticsearch(
+        ES_BASE_URL,
+        api_key=ES_API_KEY
+    )
+else:
+    es = Elasticsearch(ES_BASE_URL)
 
 @st.cache_data(show_spinner=False)
 def search_movie_by_title(title):

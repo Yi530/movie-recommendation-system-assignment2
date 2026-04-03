@@ -6,7 +6,12 @@ TABLE_ID = "movie-database-489322.movies_dataset.movies_small"
 INDEX_NAME = "movies_autocomplete"
 
 bq_client = bigquery.Client(project=PROJECT_ID)
-es = Elasticsearch("http://localhost:9200")
+from elasticsearch import Elasticsearch
+
+es = Elasticsearch(
+    "https://f69730a9586d4e65b926e953ed921faf.europe-west3.gcp.cloud.es.io:443",
+    api_key="Ry1MUVVKMEJVRFc5eS01THFfbno6dUd5dzdMVHFLQk5Yd28zSXFueHVZQQ=="
+)
 
 query = f"""
 SELECT movieId, title, genres
