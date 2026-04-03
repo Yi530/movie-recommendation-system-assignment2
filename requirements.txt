@@ -1,0 +1,8 @@
+streamlit
+flask
+google-cloud-bigquery
+pandas
+db-dtypes
+requests
+elasticsearch==8.13.2
+pycountry
